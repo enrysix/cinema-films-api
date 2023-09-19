@@ -1,4 +1,4 @@
-const { port } = require('./config/local').getParams()
+const { port } = require('./config').getParams()
 const { App } = require('./app')
 
 /* Run server */

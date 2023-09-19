@@ -1,4 +1,4 @@
-const { logLevel } = require('../config/local').getParams()
+const { logLevel } = require('../config').getParams()
 const logLevels = ['debug','info', 'warn', 'error']
 
 /**
