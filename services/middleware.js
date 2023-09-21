@@ -1,4 +1,21 @@
+const { webUrl } = require('../config').getParams()
 const logger = require('../services/logger')
+
+/**
+ *  Authentication middleware
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
+exports.authMiddleware = (_req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', webUrl)
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Content-Type','application/json')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept')
+    res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS, PUT, PATCH, DELETE')
+
+    next();
+}
 
 /**
  *  API response handler

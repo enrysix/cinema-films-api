@@ -11,7 +11,7 @@ app.get('/', (_req, res) => res.send('Cinema films server is up & running...'));
  *  Note: All methods are added in case you want to work with more endpoints later
  */
 const proxy = require('./services/proxy');
-const { handleRes } = require('./services/middleware');
+const { authMiddleware, handleRes } = require('./services/middleware');
 const backRouter = express.Router();
 
 backRouter.get(
@@ -35,6 +35,6 @@ backRouter.delete(
     handleRes((req, _res) => proxy.delete(req))
 );
 
-app.use('/api', backRouter);
+app.use('/api', authMiddleware, backRouter);
 
 exports.App = app;
